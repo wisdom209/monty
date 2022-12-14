@@ -80,7 +80,8 @@ void check_op_code(char *str, int line_number)
 						"sub",
 						"sub\n",
 						"nop",
-						"nop\n", NULL};
+						"nop\n",
+						"div", "div\n", NULL};
 
 	int i = 0;
 

@@ -48,6 +48,7 @@ size_t peek(stack_t *h, int ln);
 size_t swap(stack_t *h, int ln);
 size_t add(stack_t *h, int ln);
 size_t sub(stack_t *h, int ln);
+size_t _div(stack_t *h, int ln);
 
 void check_args(int argc);
 FILE *get_file(const char *path);
@@ -58,11 +59,13 @@ int is_string_printable(char *str);
 void check_op_code(char *str, int line_number);
 int check_arg2(char *arg_2);
 
+
 void print_top_stack(char *op_code, stack_t *stack, int ln);
 void pop_top_of_stack(char *op_code, stack_t *stack, int ln);
 void swap_top_stack(char *op_code, stack_t *stack, int ln);
 void add_top_stack(char *op_code, stack_t *stack, int ln);
 void nop(char *op_code);
 void sub_top_stack(char *op_code, stack_t *stack, int ln);
+void div_top_stack(char *op_code, stack_t *stack, int ln);
 
 #endif
