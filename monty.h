@@ -50,6 +50,7 @@ size_t add(stack_t *h, int ln);
 size_t sub(stack_t *h, int ln);
 size_t _div(stack_t *h, int ln);
 size_t mul(stack_t *h, int ln);
+size_t mod(stack_t *h, int ln);
 
 void check_args(int argc);
 FILE *get_file(const char *path);
@@ -68,5 +69,6 @@ void nop(char *op_code);
 void sub_top_stack(char *op_code, stack_t *stack, int ln);
 void div_top_stack(char *op_code, stack_t *stack, int ln);
 void mul_top_stack(char *op_code, stack_t *stack, int ln);
+void mod_top_stack(char *op_code, stack_t *stack, int ln);
 
 #endif
