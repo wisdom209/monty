@@ -15,6 +15,7 @@ void call_opfunc(char *op_code, stack_t *stack, const int op_num, int ln)
 	pop_top_of_stack(op_code, stack, ln);
 	swap_top_stack(op_code, stack, ln);
 	add_top_stack(op_code, stack, ln);
+	sub_top_stack(op_code, stack, ln);
 	print_stack(op_code, stack);
 }
 

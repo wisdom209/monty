@@ -47,6 +47,21 @@ void add_top_stack(char *op_code, stack_t *stack, int ln)
 		add(stack, ln);
 	}
 }
+/**
+ * sub_top_stack - swaps
+ * @op_code: op code
+ * @stack: stack
+ * @ln: length
+ *
+ * Return: void
+ */
+void sub_top_stack(char *op_code, stack_t *stack, int ln)
+{
+	if (strcmp(op_code, "sub\n") == 0 || strcmp(op_code, "sub") == 0)
+	{
+		sub(stack, ln);
+	}
+}
 
 /**
  * nop - does nothing

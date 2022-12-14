@@ -77,6 +77,8 @@ void check_op_code(char *str, int line_number)
 						"swap\n",
 						"add",
 						"add\n",
+						"sub",
+						"sub\n",
 						"nop",
 						"nop\n", NULL};
 
@@ -97,7 +99,6 @@ void check_op_code(char *str, int line_number)
 
 /**
  * check_arg2 - checks arg 2
- * @line_number: line number
  * @arg_2: arg 2
  *
  * Return: int

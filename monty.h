@@ -47,6 +47,7 @@ size_t print_dlistintrev(stack_t *h);
 size_t peek(stack_t *h, int ln);
 size_t swap(stack_t *h, int ln);
 size_t add(stack_t *h, int ln);
+size_t sub(stack_t *h, int ln);
 
 void check_args(int argc);
 FILE *get_file(const char *path);
@@ -62,6 +63,6 @@ void pop_top_of_stack(char *op_code, stack_t *stack, int ln);
 void swap_top_stack(char *op_code, stack_t *stack, int ln);
 void add_top_stack(char *op_code, stack_t *stack, int ln);
 void nop(char *op_code);
-
+void sub_top_stack(char *op_code, stack_t *stack, int ln);
 
 #endif
