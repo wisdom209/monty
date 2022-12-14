@@ -153,6 +153,7 @@ size_t sub(stack_t *h, int ln)
 
 	return (number_of_nodes);
 }
+
 /**
  * _div - sutracts top of stack
  * @h: head node

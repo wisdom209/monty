@@ -31,7 +31,6 @@ void pop_top_of_stack(char *op_code, stack_t *stack, int ln)
 		}
 	}
 }
-
 /**
  * add_top_stack - swaps
  * @op_code: op code
@@ -77,7 +76,6 @@ void div_top_stack(char *op_code, stack_t *stack, int ln)
 		_div(stack, ln);
 	}
 }
-
 /**
  * nop - does nothing
  * @op_code: op code
