@@ -54,6 +54,7 @@ size_t mod(stack_t *h, int ln);
 size_t peek_char(stack_t *h, int ln);
 size_t printstr_dlistintrev(stack_t *h);
 void rotate_left(stack_t *h);
+void rotate_right(stack_t *h);
 
 void check_args(int argc);
 FILE *get_file(const char *path);
@@ -76,6 +77,7 @@ void div_top_stack(char *op_code, stack_t *stack, int ln);
 void mul_top_stack(char *op_code, stack_t *stack, int ln);
 void mod_top_stack(char *op_code, stack_t *stack, int ln);
 void rotate_stack_left(char *opcode, stack_t *stack);
+void rotate_stack_right(char *opcode, stack_t *stack);
 
 int check_comment(char *arg_1);
 int check_empty_line(char *arg_1, char *string);

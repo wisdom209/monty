@@ -90,7 +90,9 @@ stack_t *del_dnodeint(stack_t **head)
 
 	*head = temp->next;
 	free(temp);
-	(*head)->prev = NULL;
+
+	if (head)
+		(*head)->prev = NULL;
 
 	return (*head);
 }
