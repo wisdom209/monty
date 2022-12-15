@@ -71,4 +71,6 @@ void div_top_stack(char *op_code, stack_t *stack, int ln);
 void mul_top_stack(char *op_code, stack_t *stack, int ln);
 void mod_top_stack(char *op_code, stack_t *stack, int ln);
 
+int check_comment(char *arg_1);
+int check_empty_line(char *arg_1, char *string);
 #endif

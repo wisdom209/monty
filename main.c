@@ -24,17 +24,14 @@ int main(int argc, char const *argv[])
 		char *arg_1 = NULL, *arg_2 = NULL;
 		int num = 0;
 
-
 		arg_1 = strtok(string, " \t"), arg_2 = strtok(NULL, " ");
 
-		if (
-			is_string_printable(arg_1) == 0 ||
-			strlen(arg_1) == 1 ||
-			string[0] == '\n')
+		if (check_comment(arg_1) == 1 || check_empty_line(arg_1, string))
 		{
 			line_num++;
 			continue;
 		}
+
 		num = check_arg2(arg_2);
 		if (arg_1)
 			call_opfunc(arg_1, head, num, line_num);
