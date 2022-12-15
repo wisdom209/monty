@@ -89,3 +89,39 @@ size_t mod(stack_t *h, int ln)
 	}
 	return (number_of_nodes);
 }
+
+/**
+ * peek_char - print top of stack
+ * @h: head node
+ * @ln: line number
+ *
+ * Return: number of nodes
+ */
+size_t peek_char(stack_t *h, int ln)
+{
+	size_t number_of_nodes = 0;
+	stack_t *temp = h;
+
+	if (h == NULL)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", ln);
+		exit(EXIT_FAILURE);
+	}
+	while (temp && temp->next != NULL)
+	{
+		number_of_nodes++;
+		temp = temp->next;
+	}
+	while (temp != NULL)
+	{
+		if (temp->n >= 0 && temp->n <= 127)
+			printf("%c\n", temp->n);
+		else
+		{
+			fprintf(stderr, "L%d: can't pchar, value out of range\n", ln);
+			exit(EXIT_FAILURE);
+		}
+		break;
+	}
+	return (number_of_nodes);
+}

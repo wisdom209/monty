@@ -31,3 +31,23 @@ void mod_top_stack(char *op_code, stack_t *stack, int ln)
 		mod(stack, ln);
 	}
 }
+
+
+/**
+ * print_char_top_stack - peek char value
+ * @op_code: op code
+ * @stack: stack head
+ * @ln: line number
+ *
+ * Return: void
+ */
+void print_char_top_stack(char *op_code, stack_t *stack, int ln)
+{
+	if (strcmp(op_code, "pchar\n") == 0 || strcmp(op_code, "pchar") == 0)
+	{
+		if (stack && stack->next == NULL)
+			printf("%d\n", stack->n);
+		else
+			peek_char(stack, ln);
+	}
+}
