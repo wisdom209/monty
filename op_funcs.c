@@ -76,7 +76,7 @@ void print_top_stack(char *op_code, stack_t *stack, int ln)
 {
 	if (strcmp(op_code, "pint\n") == 0 || strcmp(op_code, "pint") == 0)
 	{
-		if (stack->next == NULL)
+		if (stack && stack->next == NULL)
 			printf("%d\n", stack->n);
 		else
 			peek(stack, ln);
