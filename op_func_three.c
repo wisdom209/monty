@@ -58,3 +58,19 @@ void print_char_top_stack(char *op_code, stack_t *stack, int ln)
 			peek_char(stack, ln);
 	}
 }
+
+/**
+ * printstr_stack - print stack as strings
+ * @op_code: op code
+ * @stack: stack
+ *
+ * Return: void
+ */
+void printstr_stack(char *op_code, stack_t *stack)
+{
+
+	if (strcmp(op_code, "pstr\n") == 0 || strcmp(op_code, "pstr") == 0)
+	{
+		printstr_dlistintrev(stack);
+	}
+}

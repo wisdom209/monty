@@ -125,3 +125,41 @@ size_t peek_char(stack_t *h, int ln)
 	}
 	return (number_of_nodes);
 }
+
+/**
+ * printstr_dlistintrev - print chars
+ * @h: head node
+ *
+ * Return: number of nodes
+ */
+size_t printstr_dlistintrev(stack_t *h)
+{
+	size_t number_of_nodes = 0;
+	stack_t *temp = h;
+
+	if (h == NULL)
+	{
+		printf("\n");
+		return (number_of_nodes);
+	}
+
+	while (temp && temp->next != NULL)
+	{
+		number_of_nodes++;
+		temp = temp->next;
+	}
+
+	while (temp != NULL)
+	{
+		if (temp->n >= 1 && temp->n <= 127)
+			printf("%c", temp->n);
+		else
+		{
+			printf("\n");
+			return (number_of_nodes);
+		}
+		temp = temp->prev;
+	}
+	printf("\n");
+	return (number_of_nodes);
+}
