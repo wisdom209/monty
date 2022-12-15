@@ -8,7 +8,7 @@
  */
 int check_comment(char *arg_1)
 {
-	if (strcmp(arg_1, "#") == 0 || strcmp(arg_1, "#\n") == 0)
+	if (arg_1 && arg_1[0] == '#')
 		return (1);
 	return (0);
 }

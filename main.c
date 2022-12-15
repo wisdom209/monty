@@ -26,7 +26,7 @@ int main(int argc, char const *argv[])
 
 		arg_1 = strtok(string, " \t"), arg_2 = strtok(NULL, " ");
 
-		if (check_comment(arg_1) == 1 || check_empty_line(arg_1, string))
+		if (check_comment(arg_1) || check_empty_line(arg_1, string))
 		{
 			line_num++;
 			continue;
