@@ -52,7 +52,7 @@ size_t mul(stack_t *h, int ln)
 size_t mod(stack_t *h, int ln)
 {
 	size_t number_of_nodes = 0;
-	stack_t *temp = h;
+	stack_t *temp = head;
 	int temp_num = 0;
 
 	if (h == NULL || h->next == NULL)

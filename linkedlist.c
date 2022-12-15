@@ -108,6 +108,8 @@ stack_t *delend_dnodeint(stack_t **head)
 		return (*head);
 	while (temp && temp->next->next != NULL)
 		temp = temp->next;
+
+	free(temp->next);
 	temp->next = NULL;
 
 	return (*head);
