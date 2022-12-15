@@ -163,3 +163,27 @@ size_t printstr_dlistintrev(stack_t *h)
 	printf("\n");
 	return (number_of_nodes);
 }
+
+/**
+ * rotate_left - top of stack becomes first
+ * @h: head
+ *
+ * Return: void
+ */
+void rotate_left(stack_t *h)
+{
+	stack_t *temp = h;
+	int hold_last_n = 0;
+
+	if (h == NULL || (h && h->next == NULL))
+		return;
+
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+	}
+
+	hold_last_n = temp->n;
+	delend_dnodeint(&head);
+	add_dnodeint(&head, hold_last_n);
+}

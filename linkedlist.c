@@ -89,13 +89,14 @@ stack_t *del_dnodeint(stack_t **head)
 		return (*head);
 
 	*head = temp->next;
+	free(temp);
 	(*head)->prev = NULL;
 
 	return (*head);
 }
 
 /**
- * delend_dnodeint - del node at beginning of list
+ * delend_dnodeint - del node at end of list
  * @head: list head
  *
  * Return: address of del element

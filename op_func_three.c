@@ -74,3 +74,18 @@ void printstr_stack(char *op_code, stack_t *stack)
 		printstr_dlistintrev(stack);
 	}
 }
+
+/**
+ * rotate_stack_left - do this
+ * @opcode: opcode
+ * @stack: head
+ *
+ * Return: void
+ */
+void rotate_stack_left(char *opcode, stack_t *stack)
+{
+	if (strcmp(opcode, "rotl\n") == 0 || strcmp(opcode, "rotl") == 0)
+	{
+		rotate_left(stack);
+	}
+}

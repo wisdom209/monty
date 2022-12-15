@@ -78,7 +78,8 @@ void check_op_code(char *str, int line_number)
 						"mod", "mod\n",
 						"div", "div\n",
 						"mul", "mul\n",
-						"pstr", "pstr\n", NULL};
+						"pstr", "pstr\n",
+						"rotl", "rotl\n", NULL};
 
 	int i = 0;
 
