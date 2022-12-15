@@ -32,7 +32,6 @@ void mod_top_stack(char *op_code, stack_t *stack, int ln)
 	}
 }
 
-
 /**
  * print_char_top_stack - peek char value
  * @op_code: op code
@@ -46,7 +45,15 @@ void print_char_top_stack(char *op_code, stack_t *stack, int ln)
 	if (strcmp(op_code, "pchar\n") == 0 || strcmp(op_code, "pchar") == 0)
 	{
 		if (stack && stack->next == NULL)
-			printf("%d\n", stack->n);
+		{
+			if (stack->n >= 0 && stack->n <= 127)
+				printf("%c\n", stack->n);
+			else
+			{
+				fprintf(stderr, "L%d: can't pchar, value out of range\n", ln);
+				exit(EXIT_FAILURE);
+			}
+		}
 		else
 			peek_char(stack, ln);
 	}

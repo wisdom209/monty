@@ -1,6 +1,6 @@
 
 push 1
-push 72 #
+push -1 #
 pchar #
 
 push 16
