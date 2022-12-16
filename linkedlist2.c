@@ -138,7 +138,7 @@ size_t sub(stack_t *h, int ln)
 
 	while (temp != NULL)
 	{
-		temp_num = abs(temp->n - temp->prev->n);
+		temp_num = (temp->n - temp->prev->n);
 		delend_dnodeint(&head);
 		if (head && head->next == NULL)
 		{
