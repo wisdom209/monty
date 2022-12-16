@@ -105,32 +105,34 @@ void check_op_code(char *str, int line_number)
  */
 int check_arg2(char *arg_2)
 {
-	int a = 0;
-	int len = 0;
+	int a = 0, i = 0;
 
 	if (arg_2 == NULL)
-	{
 		return (INT_NULL);
-	}
 
 	a = atoi(arg_2);
-	len = strlen(arg_2);
+	i = strlen(arg_2);
 
-	if (arg_2[0] == '0')
+	if (arg_2[0] == '-' && i == 1)
 	{
-		if (arg_2[len - 1] == '\n')
-			arg_2[len - 1] = '\0';
-		if (strlen(arg_2) == 1)
-			return (0);
 		return (INT_NULL);
 	}
-	else
+
+	i = 0;
+	while (arg_2[i] != 0 && isprint(arg_2[i]))
 	{
-		if (a == 0 || arg_2 == NULL)
+		if (i == 0 && arg_2[i] == '-')
 		{
-			return (INT_NULL);
+			i++;
+			continue;
 		}
-		return (a);
+		else
+		{
+			if (!isdigit(arg_2[i]))
+				return (INT_NULL);
+		}
+		i++;
 	}
-	return (0);
+
+	return (a);
 }

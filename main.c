@@ -24,7 +24,7 @@ int main(int argc, char const *argv[])
 		char *arg_1 = NULL, *arg_2 = NULL;
 		int num = 0;
 
-		arg_1 = strtok(string, " \t"), arg_2 = strtok(NULL, " ");
+		arg_1 = strtok(string, " \t"), arg_2 = strtok(NULL, " \t\n");
 
 		if (check_comment(arg_1) || check_empty_line(arg_1, string))
 		{
