@@ -12,7 +12,7 @@ stack_t *head = NULL;
 int main(int argc, char const *argv[])
 {
 	FILE *f = NULL;
-	int bytes_read = 0, line_num = 1;
+	int bytes_read = 0, line_num = 1, isStack = 1;
 	size_t space = 0;
 	char *string = NULL;
 
@@ -21,20 +21,24 @@ int main(int argc, char const *argv[])
 
 	while ((bytes_read = getline(&string, &space, f)) != -1)
 	{
-		char *arg_1 = NULL, *arg_2 = NULL;
+		char *firstToken = NULL, *secondToken = NULL;
 		int num = 0;
 
-		arg_1 = strtok(string, " \t"), arg_2 = strtok(NULL, " \t\n");
+		firstToken = strtok(string, " \t");
+		secondToken = strtok(NULL, " \t\n");
 
-		if (check_comment(arg_1) || check_empty_line(arg_1, string))
+		if (check_comment(firstToken) || check_empty_line(firstToken, string))
 		{
 			line_num++;
 			continue;
 		}
 
-		num = check_arg2(arg_2);
-		if (arg_1)
-			call_opfunc(arg_1, head, num, line_num);
+		num = check_arg2(secondToken);
+		if (firstToken)
+		{
+			set_stack_or_queue(firstToken, &isStack);
+			call_opfunc(firstToken, head, num, line_num, isStack);
+		}
 		else
 			break;
 		line_num++;

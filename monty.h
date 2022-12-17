@@ -55,10 +55,13 @@ size_t peek_char(stack_t *h, int ln);
 size_t printstr_dlistintrev(stack_t *h);
 void rotate_left(stack_t *h);
 void rotate_right(stack_t *h);
+stack_t *enqueue_stack(char *op_code, stack_t *stack, const int op_num, int ln);
+void dequeue_stack(char *op_code, stack_t *stack, int ln);
 
+void set_stack_or_queue(char *arg_1, int *isStack);
 void check_args(int argc);
 FILE *get_file(const char *path);
-void call_opfunc(char *op_code, stack_t *stack, int op_num, int ln);
+void call_opfunc(char *op_code, stack_t *stack, int op_num, int ln, int isStack);
 stack_t *push_stack(char *op_code, stack_t *stack, const int op_num, int ln);
 void print_stack(char *op_code, stack_t *stack);
 int is_string_printable(char *str);

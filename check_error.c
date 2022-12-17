@@ -80,7 +80,10 @@ void check_op_code(char *str, int line_number)
 						"mul", "mul\n",
 						"pstr", "pstr\n",
 						"rotl", "rotl\n",
-						"rotr", "rotr\n", NULL};
+						"rotr", "rotr\n",
+						"queue", "queue\n",
+						"stack", "stack\n",
+						NULL};
 
 	int i = 0;
 

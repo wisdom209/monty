@@ -6,13 +6,26 @@
  * @op_code: op string code
  * @op_num: op num
  * @ln: line number
+ * @isStack: stack or queue flag
+ *
+ * Return: void
  */
-void call_opfunc(char *op_code, stack_t *stack, const int op_num, int ln)
+void call_opfunc(char *op_code, stack_t *stack,
+				 const int op_num, int ln, int isStack)
 {
 	check_op_code(op_code, ln);
-	head = push_stack(op_code, stack, op_num, ln);
+
+	if (isStack)
+	{
+		head = push_stack(op_code, stack, op_num, ln);
+		pop_top_of_stack(op_code, stack, ln);
+	}
+	else
+	{
+		head = enqueue_stack(op_code, stack, op_num, ln);
+		dequeue_stack(op_code, stack, ln);
+	}
 	print_top_stack(op_code, stack, ln);
-	pop_top_of_stack(op_code, stack, ln);
 	swap_top_stack(op_code, stack, ln);
 	add_top_stack(op_code, stack, ln);
 	sub_top_stack(op_code, stack, ln);
