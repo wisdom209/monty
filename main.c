@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 	if (f == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", path);
-		exit(EXIT_SUCCESS);
+		exit(EXIT_FAILURE);
 	}
 	while ((bytes_read = getline(&buffer, &space, f)) != -1)
 	{
