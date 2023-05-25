@@ -1,10 +1,11 @@
-#ifndef _main_h_
-#define _main_h_
+#ifndef _MAIN_H_
+#define _MAIN_H_
+#define _GNU_SOURCE
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
-#include <ctype.h>
-#define INT_NULL -9999999
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -22,6 +23,8 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
+extern stack_t *head;
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -36,73 +39,22 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern stack_t *head;
-
-/* check_data_structure.c */
-void set_stack_or_queue(char *arg_1, int *isStack);
-
-/* check_error.c */
-int is_string_printable(char *str);
-void check_args(int argc);
-FILE *get_file(const char *path);
-void check_op_code(char *str, int line_number);
-int check_arg2(char *arg_2);
-
-/* continue_checks.c */
-int check_comment(char *arg_1);
-int check_empty_line(char *arg_1, char *string);
-
-/* freelist.c */
-void free_dlistint(stack_t *head);
-
-/* linkedlist.c */
-stack_t *add_dnodeint(stack_t **head, const int n);
-stack_t *add_dnodeint_end(stack_t **head, const int n);
-stack_t *del_dnodeint(stack_t **head);
-stack_t *delend_dnodeint(stack_t **head);
-size_t print_dlistintrev(stack_t *h);
-
-/* linkedlist2.c */
-size_t peek(stack_t *h, int ln);
-size_t swap(stack_t *h, int ln);
-size_t add(stack_t *h, int ln);
-size_t sub(stack_t *h, int ln);
-size_t _div(stack_t *h, int ln);
-
-/* linkedlist3.c */
-size_t mul(stack_t *h, int ln);
-size_t mod(stack_t *h, int ln);
-size_t peek_char(stack_t *h, int ln);
-size_t printstr_dlistintrev(stack_t *h);
-void rotate_left(stack_t *h);
-
-/* linkedlist4.c */
-void rotate_right(stack_t *h);
-
-/* op_funcs.c */
-void call_opfunc(char *op_code, stack_t *stack, int op_num, int ln, int isStack);
-stack_t *push_stack(char *op_code, stack_t *stack, const int op_num, int ln);
-void print_stack(char *op_code, stack_t *stack);
-void print_top_stack(char *op_code, stack_t *stack, int ln);
-void swap_top_stack(char *op_code, stack_t *stack, int ln);
-
-/* op_funcs_two.c */
-void pop_top_of_stack(char *op_code, stack_t *stack, int ln);
-void add_top_stack(char *op_code, stack_t *stack, int ln);
-void sub_top_stack(char *op_code, stack_t *stack, int ln);
-void div_top_stack(char *op_code, stack_t *stack, int ln);
-void nop(char *op_code);
-
-/* op_funcs_three.c */
-void mul_top_stack(char *op_code, stack_t *stack, int ln);
-void mod_top_stack(char *op_code, stack_t *stack, int ln);
-void print_char_top_stack(char *op_code, stack_t *stack, int ln);
-void rotate_stack_left(char *opcode, stack_t *stack);
-void printstr_stack(char *op_code, stack_t *stack);
-
-/* op_funcs_four.c */
-void rotate_stack_right(char *opcode, stack_t *stack);
-stack_t *enqueue_stack(char *op_code, stack_t *stack, const int op_num, int ln);
-void dequeue_stack(char *op_code, stack_t *stack, int ln);
-
+FILE *getfile(char *path);
+void push(char *first, int second, int line_number);
+void pall(stack_t *head, char *opcode);
+void check_code(char *first, int second, int line_number);
+void checkArgs(char *opcode, int line_number);
+int check_only_figures(char *first, char *second);
+void pint(char *opcode, int line_number);
+void pop(char *opcode, int line_number);
+void swap(char *opcode, int line_number);
+void add(char *opcode, int line_number);
+void sub(char *opcode, int line_number);
+void divs(char *opcode, int line_number);
+void mul(char *opcode, int line_number);
+void mod(char *opcode, int line_number);
+void pchar(char *opcode, int line_number);
+void rotl(char *opcode, int line_number);
+void rotr(char *opcode, int line_number);
+void pstr(stack_t *head, char *opcode);
 #endif

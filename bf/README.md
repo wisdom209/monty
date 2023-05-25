@@ -1,1 +1,1 @@
-Brainfuck basic programs
+# a Brainf*ck script that prints School
