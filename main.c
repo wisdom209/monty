@@ -1,73 +1,51 @@
 #include "monty.h"
+
 stack_t *head = NULL;
 
 /**
  * main - entry
- * @argc: arg count
- * @argv: arg variable
+ * @argc: command line arg count
+ * @argv: arr of command line args
  *
- * Return: 0
+ * Return: 0 if successful
  */
-int main(int argc, char **argv)
+int main(int argc, char const *argv[])
 {
-
 	FILE *f = NULL;
-	char *path = NULL, *buffer = NULL;
-	size_t space;
-	int count = 1, bytes_read;
+	int bytes_read = 0, line_num = 1, isStack = 1;
+	size_t space = 0;
+	char *string = NULL;
 
-	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
-	path = argv[1];
-	f = fopen(path, "r");
-	if (f == NULL)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", path);
-		exit(EXIT_FAILURE);
-	}
-	while ((bytes_read = getline(&buffer, &space, f)) != -1)
-	{
-		char *first = strtok(buffer, " ");
-		char *second_str = strtok(NULL, " ");
-		int second = 0;
+	check_args(argc);
+	f = get_file(argv[1]);
 
-		if (first[strlen(first) - 1] == '\n')
-			first[strlen(first) - 1] = '\0';
-		if (second_str && second_str[strlen(second_str) - 1] == '\n')
-			second_str[strlen(second_str) - 1] = '\0';
-		if (strcmp(first, "push") == 0 && check_only_figures(first, second_str) == 1)
-			second = atoi(second_str);
-		else if (strcmp(first, "push") == 0)
-			second = -9999;
+	while ((bytes_read = getline(&string, &space, f)) != -1)
+	{
+		char *firstToken = NULL, *secondToken = NULL;
+		int num = 0;
 
-		check_code(first, second, count);
-		count++;
+		firstToken = strtok(string, " \t");
+		secondToken = strtok(NULL, " \t\n");
+
+		if (check_comment(firstToken) || check_empty_line(firstToken, string))
+		{
+			line_num++;
+			continue;
+		}
+
+		num = check_arg2(secondToken);
+		if (firstToken)
+		{
+			set_stack_or_queue(firstToken, &isStack);
+			call_opfunc(firstToken, head, num, line_num, isStack);
+		}
+		else
+			break;
+		line_num++;
 	}
+	free_dlistint(head);
+	fclose(f);
+	free(string);
+
 	return (0);
-}
-/**
- * check_only_figures - check
- * @first: opcode
- * @second: value in string
- *
- * Return: int
- */
-int check_only_figures(char *first __attribute__((unused)),
-					   char *second)
-{
-	int i = 0;
-
-	if (second == NULL || second[i] == '\0')
-		return (0);
-	if (second && second[0] == '-' && second[1])
-		i = 1;
-	for (; second[i] != '\0'; i++)
-	{
-		if (second[i] < '0' || second[i] > '9')
-			return (0);
-	}
-	return (1);
 }
